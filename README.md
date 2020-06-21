@@ -1,74 +1,108 @@
-Título del Proyecto
-===================
-daw_tp_final
-Trabajo final para la materia "Desarrollo Web" de la especialidad en IoT
+# daw_tp_final
+Trabajo final para la materia Desarrollo Web que forma parte de la especialidad en Internet de las Cosas de la Universidad de Buenos Aires.
 
-Autor
-=====
+![status](https://img.shields.io/badge/status-running-green.svg?colorB=00C106) ![readme](https://img.shields.io/badge/readme-OK-green.svg?colorB=00C106) ![database](https://img.shields.io/badge/database-OK-green.svg?colorB=00C106) ![commits](https://img.shields.io/badge/commits-26-blue.svg) ![tag](https://img.shields.io/badge/tag-v0.3-orange.svg)
+![template](https://img.shields.io/badge/template-twig-yellow.svg) ![techs](https://img.shields.io/badge/techs-javascript—php—css—bootstrap-yellow.svg)
+
+## Autor
 Atilio Cesar Errecaborde
 
-Comenzando 🚀
-Descar el proyecto 
-Estas instrucciones te permitirán obtener una copia del proyecto en funcionamiento en tu máquina local para propósitos de desarrollo y pruebas.
+## Estructura del proyecto
+La estructura del proyecto está basada en el ejercicio 12 presenentado en clases y dentro del tema nodejs de la materia. 
 
-Mira Deployment para conocer como desplegar el proyecto.
+daw_tp_final
+  └───css
+  └───db
+  └───images
+  └───js
+  └───src
+  └───ws
+  | README.md
+  | docker-compose.yml
+  | favicon.ico
+  | index.html
+  | run_phpadmin.sh
+  | serve_node_app_net.sh
+  | start_mysql.sh
 
-Pre-requisitos 📋
-Que cosas necesitas para instalar el software y como instalarlas
 
-Da un ejemplo
-Instalación 🔧
-Una serie de ejemplos paso a paso que te dice lo que debes ejecutar para tener un entorno de desarrollo ejecutandose
+### Funcionalidades y características
+- Mostrar todos los dispositivos Iot conectados
+- Permitir filtrar los dispositivos por tipo
+- Apagar/Encender dipositivos.
 
-Dí cómo será ese paso
 
-Da un ejemplo
-Y repite
+## Ejecutar el proyecto con Docker Compose
 
-hasta finalizar
-Finaliza con un ejemplo de cómo obtener datos del sistema o como usarlos para una pequeña demo
+  En la raiz del proyecto, iniciar la aplicación con el siguiente comando:
 
-Ejecutando las pruebas ⚙️
-Explica como ejecutar las pruebas automatizadas para este sistema
+     docker-compose up
+  
+  Si la aplicación se inicio correctamente, estará disponible en http://localhost:8000.
+  En http://localhost:8085 se debería poder acceder a PHPMyAdmin.
 
-Analice las pruebas end-to-end 🔩
-Explica que verifican estas pruebas y por qué
+  Para detener toda la aplicación ejecute el siguiente comando:
 
-Da un ejemplo
-Y las pruebas de estilo de codificación ⌨️
-Explica que verifican estas pruebas y por qué
+      docker-compose down 
+  
+  
+  El detalle de la configuración de los servicios en Docker Compose está disponible en:
+  https://github.com/atilioe101/daw_tp_final/blob/master/doc/notes.txt
 
-Da un ejemplo
-Despliegue 📦
-Agrega notas adicionales sobre como hacer deploy
+  Para mas detalles puede examinar el archivo:
+  https://github.com/atilioe101/daw_tp_final/blob/master/docker-compose.yml
+  
 
-Construido con 🛠️
-Menciona las herramientas que utilizaste para crear tu proyecto
+## Ejecutar el proyecto sin Docker Compose  
 
-Dropwizard - El framework web usado
-Maven - Manejador de dependencias
-ROME - Usado para generar RSS
-Contribuyendo 🖇️
-Por favor lee el CONTRIBUTING.md para detalles de nuestro código de conducta, y el proceso para enviarnos pull requests.
+  1.  El primer paso será detener todos los contenedores corriendo en la máquina ejecutando 
+      el siguiente comando:
+      
+        docker stop $(docker ps -a -q)
 
-Wiki 📖
-Puedes encontrar mucho más de cómo utilizar este proyecto en nuestra Wiki
+  2.  El siguiente paso será chequear la red de Docker que se utilizará para conectar los
+      contenedores entre sí con el siguiente comando:
 
-Versionado 📌
-Usamos SemVer para el versionado. Para todas las versiones disponibles, mira los tags en este repositorio.
+        docker network ls | grep mysql-net
+  
+  3.  Si el comando anterior no arroja info, será necesario crearla con el siguiente comando:
+  
+      docker network create --driver bridge mysql-net
 
-Autores ✒️
-Menciona a todos aquellos que ayudaron a levantar el proyecto desde sus inicios
+  4.  Con la red creada será necesario ejecutar el contenedor con la base de datos. Para eso,
+      dentro del directorio raíz del proyecto ejecutar el siguiente comando, pasándole como
+      argumento la red a utilizar y el directorio donde se encuentra la base de datos.
+      
+      ./start_mysql.sh mysql-net "$PWD"/db
 
-Andrés Villanueva - Trabajo Inicial - villanuevand
-Fulanito Detal - Documentación - fulanitodetal
-También puedes mirar la lista de todos los contribuyentes quíenes han participado en este proyecto.
+  5.  A continuación correr el gestor de base de datos PHPMyAdmin con el siguiente comando,
+      especificando la red de Docker, el nombre del servidor de base de datos y el puerto.
 
-Licencia 📄
-Este proyecto está bajo la Licencia (Tu Licencia) - mira el archivo LICENSE.md para detalles
+      ./run_phpadmin.sh mysql-net mysql-server 8085
 
-Expresiones de Gratitud 🎁
-Comenta a otros sobre este proyecto 📢
-Invita una cerveza 🍺 o un café ☕ a alguien del equipo.
-Da las gracias públicamente 🤓.
-etc.
+
+
+## Cargar la base de datos
+
+Para construir la base de datos, 
+utiliza el script [`createdb.sql`](https://github.com/AdryDev92/peluqueria_canina/blob/master/createdb.sql)
+
+## Instalación de dependencias
+Desde la terminal, usa el siguiente comando:
+
+```
+composer update
+```
+
+Éste recibe las dependencias desde el `composer.json`
+
+## Configuración de ruta de inicio
+
+```
+MAMP -> Preferences -> Web Server -> Document root(clic izquierdo) -> ruta/de/tu/proyecto/carpeta-public
+```
+
+### Tecnologías usadas
+
+La aplicación está estructurada utilizando
+`php`,`javascript`,`css`,`bootstrap` y `twig`.
