@@ -1,8 +1,8 @@
 # daw_tp_final
 Trabajo final para la materia Desarrollo Web que forma parte de la especialidad en Internet de las Cosas de la Universidad de Buenos Aires.
 
-![status](https://img.shields.io/badge/status-running-green.svg?colorB=00C106) ![readme](https://img.shields.io/badge/readme-OK-green.svg?colorB=00C106) ![database](https://img.shields.io/badge/database-OK-green.svg?colorB=00C106) ![commits](https://img.shields.io/badge/commits-26-blue.svg) ![tag](https://img.shields.io/badge/tag-v0.3-orange.svg)
-![template](https://img.shields.io/badge/template-twig-yellow.svg) ![techs](https://img.shields.io/badge/techs-javascript—php—css—bootstrap-yellow.svg)
+![status](https://img.shields.io/badge/status-running-green.svg?colorB=00C106) ![readme](https://img.shields.io/badge/readme-OK-green.svg?colorB=00C106) ![database](https://img.shields.io/badge/database-OK-green.svg?colorB=00C106) ![commits](https://img.shields.io/badge/commits-13-blue.svg) ![tag](https://img.shields.io/badge/tag-v0.3-orange.svg)
+![template](https://img.shields.io/badge/template-twig-yellow.svg) ![techs](https://img.shields.io/badge/techs-nodejs-html5-javascript—css.svg)
 
 ## Autor
 Atilio Cesar Errecaborde
@@ -101,27 +101,40 @@ Para construir la base de datos,
 utilizar el script [`smart_home`](https://github.com/atilioe101/daw_tp_final/blob/master/db/dumps/smart_home.sql)
 
 ## Instalación de dependencias
-Para instalar docker ejecute los siguientes comandos:
 
-Instalar dependencias
-```
-sudo apt-get install \
-   apt-transport-https \
-   ca-certificates \
-   curl \
-   gnupg-agent \
-   software-properties-common
-```
+    Para instalar docker ejecute los siguientes comandos:
 
-Éste recibe las dependencias desde el `composer.json`
+            Instalar dependencias
+            ```
+            sudo apt-get install \
+            apt-transport-https \
+            ca-certificates \
+            curl \
+            gnupg-agent \
+            software-properties-common
+            ```
 
-## Configuración de ruta de inicio
+            Realizar la instalación de Docker CE con el siguiente comando:
+            ```
+                sudo apt-get install docker-ce
+            ```
+            Reiniciar el servicio de Docker:
+            ```
+                sudo service docker restart
+            ```
 
-```
-MAMP -> Preferences -> Web Server -> Document root(clic izquierdo) -> ruta/de/tu/proyecto/carpeta-public
-```
+    Para instalar docker compose ejecute los siguientes comandos:
+
+        Abrir una terminal y ejecutar el siguiente comando para descargar Docker Compose.
+        ```
+        sudo curl -L https://github.com/docker/compose/releases/download/1.17.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
+        ```
+        Una vez descargado, darle permisos de ejecución con el siguiente comando.
+        ```
+        sudo chmod +x /usr/local/bin/docker-compose
+        ```
 
 ### Tecnologías usadas
 
 La aplicación está estructurada utilizando
-`php`,`javascript`,`css`,`bootstrap` y `twig`.
+`nodejs`,`html5`,`javascript`,`css`.
