@@ -12,10 +12,15 @@ La estructura del proyecto está basada en el ejercicio 12 presenentado en clase
 
 daw_tp_final
   └───css
+  |
   └───db
+  |
   └───images
+  |
   └───js
+  |
   └───src
+  |
   └───ws
   | README.md
   | docker-compose.yml
