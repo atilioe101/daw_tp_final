@@ -11,26 +11,32 @@ Atilio Cesar Errecaborde
 La estructura del proyecto está basada en el ejercicio 12 presenentado en clases y dentro del tema nodejs de la materia. 
 
 daw_tp_final
+
   └───css
-  |
+  
   └───db
-  |
+  
   └───images
-  |
+  
   └───js
-  |
+  
   └───src
-  |
+  
   └───ws
+  
   | README.md
+  
   | docker-compose.yml
+  
   | favicon.ico
+  
   | index.html
+  
   | run_phpadmin.sh
+  
   | serve_node_app_net.sh
+  
   | start_mysql.sh
-
-
 
 
 ### Funcionalidades y características
@@ -64,30 +70,36 @@ daw_tp_final
 
   1.  El primer paso será detener todos los contenedores corriendo en la máquina ejecutando 
       el siguiente comando:
-      
-        docker stop $(docker ps -a -q)
 
+      docker stop $(docker ps -a -q)
+      
+      
   2.  El siguiente paso será chequear la red de Docker que se utilizará para conectar los
       contenedores entre sí con el siguiente comando:
 
-        docker network ls | grep mysql-net
-  
-  3.  Si el comando anterior no arroja info, será necesario crearla con el siguiente comando:
-  
-      docker network create --driver bridge mysql-net
+      docker network ls | grep mysql-net
 
+        
+  3.  Si el comando anterior no arroja info, será necesario crearla con el siguiente comando:
+
+
+      docker network create --driver bridge mysql-net
+      
+      
   4.  Con la red creada será necesario ejecutar el contenedor con la base de datos. Para eso,
       dentro del directorio raíz del proyecto ejecutar el siguiente comando, pasándole como
       argumento la red a utilizar y el directorio donde se encuentra la base de datos.
+
       
       ./start_mysql.sh mysql-net "$PWD"/db
+      
 
   5.  A continuación correr el gestor de base de datos PHPMyAdmin con el siguiente comando,
       especificando la red de Docker, el nombre del servidor de base de datos y el puerto.
 
+      
       ./run_phpadmin.sh mysql-net mysql-server 8085
-
-
+      
 
 ## Cargar la base de datos
 
