@@ -60,57 +60,57 @@ daw_tp_final
   
   
   El detalle de la configuración de los servicios en Docker Compose está disponible en:
-  https://github.com/atilioe101/daw_tp_final/blob/master/doc/notes.txt
+  [`notes.txt`](https://github.com/atilioe101/daw_tp_final/blob/master/doc/notes.txt)
+
 
   Para mas detalles puede examinar el archivo:
-  https://github.com/atilioe101/daw_tp_final/blob/master/docker-compose.yml
+  [`docker-compose.yml`](https://github.com/atilioe101/daw_tp_final/blob/master/docker-compose.yml)
   
-
+  
 ## Ejecutar el proyecto sin Docker Compose  
 
   1.  El primer paso será detener todos los contenedores corriendo en la máquina ejecutando 
       el siguiente comando:
 
-      docker stop $(docker ps -a -q)
-      
+            docker stop $(docker ps -a -q)
       
   2.  El siguiente paso será chequear la red de Docker que se utilizará para conectar los
       contenedores entre sí con el siguiente comando:
 
-      docker network ls | grep mysql-net
-
+            docker network ls | grep mysql-net
         
   3.  Si el comando anterior no arroja info, será necesario crearla con el siguiente comando:
 
-
-      docker network create --driver bridge mysql-net
-      
+            docker network create --driver bridge mysql-net
       
   4.  Con la red creada será necesario ejecutar el contenedor con la base de datos. Para eso,
       dentro del directorio raíz del proyecto ejecutar el siguiente comando, pasándole como
       argumento la red a utilizar y el directorio donde se encuentra la base de datos.
 
+            ./start_mysql.sh mysql-net "$PWD"/db
       
-      ./start_mysql.sh mysql-net "$PWD"/db
-      
-
   5.  A continuación correr el gestor de base de datos PHPMyAdmin con el siguiente comando,
       especificando la red de Docker, el nombre del servidor de base de datos y el puerto.
 
-      
-      ./run_phpadmin.sh mysql-net mysql-server 8085
+            ./run_phpadmin.sh mysql-net mysql-server 8085
       
 
 ## Cargar la base de datos
 
 Para construir la base de datos, 
-utiliza el script [`createdb.sql`](https://github.com/AdryDev92/peluqueria_canina/blob/master/createdb.sql)
+utilizar el script [`smart_home`](https://github.com/atilioe101/daw_tp_final/blob/master/db/dumps/smart_home.sql)
 
 ## Instalación de dependencias
-Desde la terminal, usa el siguiente comando:
+Para instalar docker ejecute los siguientes comandos:
 
+Instalar dependencias
 ```
-composer update
+sudo apt-get install \
+   apt-transport-https \
+   ca-certificates \
+   curl \
+   gnupg-agent \
+   software-properties-common
 ```
 
 Éste recibe las dependencias desde el `composer.json`
