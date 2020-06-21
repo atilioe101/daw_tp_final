@@ -27,6 +27,7 @@ daw_tp_final
 
 
 
+
 ### Funcionalidades y características
 - Mostrar todos los dispositivos Iot conectados
 - Permitir filtrar los dispositivos por tipo
