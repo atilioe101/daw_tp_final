@@ -1,0 +1,35 @@
+● mysql-server:
+    ○ Nombre de la imagen:      mysql:5.7
+    ○ Nombre contenedor:        mysql-server
+    ○ Network:                  net-web-app
+    ○ restart:                  always
+    ○ Variables de entorno
+        MYSQL_USER:             root
+        MYSQL_PASSWORD:         userpass     
+        MYSQL_ROOT_PASSWORD:    userpass
+    ○ Puertos:                  3306:3306
+    ○ Volumenes:
+        -                       ./db/dumps:/docker-entrypoint-initdb.d
+        -                       ./db/data:/var/lib/mysql       
+
+● phpmyadmin:
+    ○ Nombre de la imagen:      phpmyadmin/phpmyadmin:latest
+    ○ Nombre contenedor:        phpmyadmin
+    ○ Network:                  net-web-app
+    ○ restart:                  always
+    ○ Variables de entorno
+        PMA_HOST:               mysql-server
+        PMA_PORT:               3306
+        MYSQL_ROOT_PASSWORD:    userpass  
+    ○ Puertos:                  8085:80
+    ○ depends_on:               mysql-server
+    
+
+● node-app:
+    ○ Nombre de la imagen:      abassi/nodejs-server:10.0-dev
+    ○ Nombre contenedor:        node-app
+    ○ Network:                  net-web-app   
+    ○ Puertos:                  8000:3000
+    ○ Volumenes:
+        -                       .:/home/node/app
+    ○ command:                  nodemon ws/index.js 
