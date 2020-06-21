@@ -1,0 +1,54 @@
+version: '3'
+
+services:
+
+ mysql-server:
+   image:                  mysql:5.7
+   hostname:               mysql-server
+   container_name:         mysql-server
+   restart:                always
+   environment:     
+     MYSQL_USER:           root
+     MYSQL_PASSWORD:       userpass     
+     MYSQL_ROOT_PASSWORD:  userpass
+   volumes:
+     -                     ./db/dumps:/docker-entrypoint-initdb.d
+     -                     ./db/data:/var/lib/mysql          
+   networks:
+     -                     net-web-app
+
+ phpmyadmin:
+   image:                  phpmyadmin/phpmyadmin:latest
+   hostname:               phpmyadmin
+   container_name:         phpmyadmin
+   restart:                always
+   environment:
+     PMA_HOST:             mysql-server
+     PMA_PORT:             3306
+     MYSQL_ROOT_PASSWORD:  userpass  
+   depends_on:
+     -                     mysql-server
+   ports:
+     -                     "8085:80"
+   networks:
+     -                     net-web-app
+ 
+ node-app:
+    image:                  abassi/nodejs-server:10.0-dev
+    hostname:               node-app
+    container_name:         node-app
+    restart:                unless-stopped  
+    depends_on:
+     -                      mysql-server 
+    volumes:     
+      -                     .:/home/node/app     
+    networks:
+      -                     net-web-app      
+    ports:
+      -                     "8000:3000"
+    command:                nodemon ws/index.js
+ 
+
+networks:
+ net-web-app:
+   driver:                 bridge
