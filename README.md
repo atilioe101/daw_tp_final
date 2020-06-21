@@ -11,33 +11,20 @@ Atilio Cesar Errecaborde
 La estructura del proyecto está basada en el ejercicio 12 presenentado en clases y dentro del tema nodejs de la materia. 
 
 daw_tp_final
-
   └───css
-
   └───db
-
   └───images
-
   └───js
-
   └───src
-
   └───ws
-
   | README.md
-
   | docker-compose.yml
-
   | favicon.ico
-
   | index.html
-
   | run_phpadmin.sh
-
   | serve_node_app_net.sh
-
   | start_mysql.sh
-  
+
 
 
 ### Funcionalidades y características
