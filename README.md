@@ -1,8 +1,8 @@
 # daw_tp_final
 Trabajo final para la materia Desarrollo Web que forma parte de la especialidad en Internet de las Cosas de la Universidad de Buenos Aires.
 
-![status](https://img.shields.io/badge/status-running-green.svg?colorB=00C106) ![readme](https://img.shields.io/badge/readme-OK-green.svg?colorB=00C106) ![database](https://img.shields.io/badge/database-OK-green.svg?colorB=00C106) ![commits](https://img.shields.io/badge/commits-13-blue.svg) ![tag](https://img.shields.io/badge/tag-v0.3-orange.svg)
-![template](https://img.shields.io/badge/template-twig-yellow.svg) ![techs](https://img.shields.io/badge/techs-nodejs-html5-javascript—css.svg)
+![status](https://img.shields.io/badge/status-running-green.svg?colorB=00C106) ![readme](https://img.shields.io/badge/readme-OK-green.svg?colorB=00C106) ![database](https://img.shields.io/badge/database-OK-green.svg?colorB=00C106) ![commits](https://img.shields.io/badge/commits-13-blue.svg)
+![techs](https://img.shields.io/badge/techs-nodejs-html5-javascript—css.svg)
 
 ## Autor
 Atilio Cesar Errecaborde
